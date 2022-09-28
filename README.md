@@ -1,6 +1,6 @@
 # Event Bubbling
 
-![Event Bubbling](https://en.wikipedia.org/wiki/File:Event_bubbling.jpg)
+![https://en.wikipedia.org/wiki/File:Event_bubbling.jpg](Event_bubbling.jpg)
 
 ### En
 
