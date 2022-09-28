@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Event Bubbling
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Event Bubbling](https://en.wikipedia.org/wiki/File:Event_bubbling.jpg)
 
-## Available Scripts
+### En
 
-In the project directory, you can run:
+Event bubbling is a type of event propagation where the event triggers the innermost target element first and then repeatedly triggers the ancestors of the target element in the same nesting hierarchy until it reaches the outermost DOM element or document object. It is a way of handling events in the browser. Wikipedia (English)
 
-### `npm start`
+In this example, there is a form in the 1st popup, and any click outside of the form causes the popup to be closed by the onClick event assigned to the popup.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In the 2nd example, there is a form that does not have the onClick event set, and in this case, wherever you click on the screen, the popup will be closed.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```javascript
+Event.stopPropagation();
+```
 
-### `npm test`
+> The stopPropagation() method of the Event interface prevents further
+> propagation of the current event in the capturing and bubbling
+> phases. It does not, however, prevent any default behaviors from
+> occurring; for instance, clicks on links are still processed.
+> [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Tr
 
-### `npm run build`
+JavaScript Event Bubbling
+Olay köpürme, olayın ilk önce en içteki hedef öğeyi tetiklediği ve daha sonra aynı iç içe yerleştirme hiyerarşisindeki hedef öğenin atalarını en dıştaki DOM öğesine veya belge nesnesine ulaşana kadar art arda tetiklediği bir tür olay yayılımıdır. Olayların tarayıcıda ele alınmasının bir yoludur. Wikipedia (İngilizce)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Bu örnekte 1.popupda bir form var ve form dışında tıklanan herhangi bir yer popupun kapanmasını sağlıyor bunu sağlayan şey popupa atanmış olan onClick event'ı dır
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2.örnekte onClick eventı atanmamış bir form var ve bu durmda ekranda nerye tıklarsanız tıklayın popup kapanacaktır.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```javascript
+Event.stopPropagation();
+```
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> Event arabiriminin stopPropagation() yöntemi, geçerli olayın
+> yakalama ve köpürme aşamalarında daha fazla yayılmasını önler.
+> Ancak, herhangi bir varsayılan davranışın oluşmasını engellemez;
+> örneğin, bağlantılara yapılan tıklamalar hala işlenir.
+> [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation)

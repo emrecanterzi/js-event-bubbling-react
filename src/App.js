@@ -1,24 +1,115 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import EventBubblingBlockedPopup from "./components/EventBubblingBlockedPopup";
+import EventBubblingUnblockedPopup from "./components/EventBubblingUnblockedPopup";
 
 function App() {
+  const [isEventBubblingBlockedPopup, setIsEventBubblingBlockedPopup] =
+    useState(false);
+  const [isEventBubblingUnblockedPopup, setIsEventBubblingUnblockedPopup] =
+    useState(false);
+
+  const openEventBubblingBlockedPopup = () => {
+    setIsEventBubblingBlockedPopup(true);
+  };
+  const closeEventBubblingBlockedPopup = () => {
+    setIsEventBubblingBlockedPopup(false);
+  };
+
+  const openEventBubblingunBlockedPopup = () => {
+    setIsEventBubblingUnblockedPopup(true);
+  };
+  const closeEventBubblingunBlockedPopup = () => {
+    setIsEventBubblingUnblockedPopup(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <main className="home">
+      {isEventBubblingBlockedPopup && (
+        <EventBubblingBlockedPopup
+          closePopup={closeEventBubblingBlockedPopup}
+        />
+      )}
+      {isEventBubblingUnblockedPopup && (
+        <EventBubblingUnblockedPopup
+          closePopup={closeEventBubblingunBlockedPopup}
+        />
+      )}
+      <h1>Event Bubbling</h1>
+      <div>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <strong>JavaScript Event Bubbling - EN</strong>
+          <br />
+          Event bubbling is a type of event propagation where the event triggers
+          the innermost target element first and then repeatedly triggers the
+          ancestors of the target element in the same nesting hierarchy until it
+          reaches the outermost DOM element or document object. It is a way of
+          handling events in the browser. Wikipedia (English)
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <p>
+          In this example, there is a form in the 1st popup, and any click
+          outside of the form causes the popup to be closed by the onClick event
+          assigned to the popup.
+        </p>
+        <p>
+          In the 2nd example, there is a form that does not have the onClick
+          event set, and in this case, wherever you click on the screen, the
+          popup will be closed.
+        </p>
+        <p>
+          <pre>Event.stopPropagation()</pre>
+          <q>
+            The stopPropagation() method of the Event interface prevents further
+            propagation of the current event in the capturing and bubbling
+            phases. It does not, however, prevent any default behaviors from
+            occurring; for instance, clicks on links are still processed.
+          </q>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation">
+            (developer.mozilla.org)
+          </a>
+        </p>
+      </div>
+
+      <div>
+        <p>
+          <strong>JavaScript Event Bubbling - TR</strong>
+          <br />
+          Olay köpürme, olayın ilk önce en içteki hedef öğeyi tetiklediği ve
+          daha sonra aynı iç içe yerleştirme hiyerarşisindeki hedef öğenin
+          atalarını en dıştaki DOM öğesine veya belge nesnesine ulaşana kadar
+          art arda tetiklediği bir tür olay yayılımıdır. Olayların tarayıcıda
+          ele alınmasının bir yoludur. Wikipedia (İngilizce)
+        </p>
+        <p>
+          Bu örnekte 1. popupda bir form var ve form dışında tıklanan herhangi
+          bir yer popupun kapanmasını sağlıyor bunu sağlayan şey popupa atanmış
+          olan onClick event'ı dır
+        </p>
+        <p>
+          2. örnekte onClick eventı atanmamış bir form var ve bu durmda ekranda
+          nerye tıklarsanız tıklayın popup kapanacaktır.
+        </p>
+        <p>
+          <pre>Event.stopPropagation()</pre>
+          <q>
+            Event arabiriminin stopPropagation() yöntemi, geçerli olayın
+            yakalama ve köpürme aşamalarında daha fazla yayılmasını önler.
+            Ancak, herhangi bir varsayılan davranışın oluşmasını engellemez;
+            örneğin, bağlantılara yapılan tıklamalar hala işlenir.
+          </q>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation">
+            (developer.mozilla.org)
+          </a>
+        </p>
+      </div>
+
+      <button onClick={openEventBubblingBlockedPopup} className="openBtn">
+        Open popup (with stopPropagation)
+      </button>
+      <button onClick={openEventBubblingunBlockedPopup} className="openBtn">
+        Open popup (without stopPropagation)
+      </button>
+    </main>
   );
 }
 
